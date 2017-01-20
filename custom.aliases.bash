@@ -1,6 +1,6 @@
 alias cdd='cd /Users/Frantisek/Downloads'
 alias gf='git flow'
-alias gff='git fetch origin develop:develop && git-flow feature start'
+alias gff='git checkout develop && git pull && git-flow feature start'
 alias ll='ls -AFGhl'
 
 alias gl='git log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white)"'
