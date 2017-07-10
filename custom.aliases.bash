@@ -12,3 +12,9 @@ alias lein="rlwrap lein"
 
 # simple python server, default port is 8000
 alias pserver="python -m SimpleHTTPServer"
+
+# returns my default IP addressss
+alias myIp="ifconfig en0 inet | awk '/inet/{print \$2}'"
+
+# docker psql
+alias psql='docker run -it --rm --network="host" matteofigus/docker-sqitch psql "$@"'
