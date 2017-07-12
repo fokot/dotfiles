@@ -1,5 +1,15 @@
 Now I'm using [bash-it](https://github.com/Bash-it/bash-it).
 
+I enabled there competions ```bash-it show completion | grep '\[x\]'```
+
+  bash-it               [x]     
+  dirs                  [x]     
+  docker                [x]     
+  git                   [x]     
+  git_flow              [x]     
+  ssh                   [x]     
+  system                [x] 
+
 So
 * .bash_profile is not needed anymore
 * .bash-it/aliases/custom.aliases.bash is used for my own aliases instead
