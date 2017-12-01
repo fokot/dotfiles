@@ -18,3 +18,8 @@ alias myIp="ifconfig en0 inet | awk '/inet/{print \$2}'"
 
 # docker psql
 alias psql='docker run -it --rm --network="host" matteofigus/docker-sqitch psql "$@"'
+
+# haskell
+alias runhaskell='stack runhaskell'
+alias ghc='stack exec ghc --'
+alias ghci='stack exec ghci --'
