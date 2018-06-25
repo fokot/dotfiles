@@ -5,6 +5,8 @@ alias gf='git flow'
 alias gff='git checkout develop && git pull && git-flow feature start'
 alias gp='git push origin HEAD'
 alias gl='git log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white)"'
+# delete all banches except develop
+alias gd='git branch | grep -v "develop" | xargs git branch -D'
 
 
 # better history https://github.com/hanslub42/rlwrap
