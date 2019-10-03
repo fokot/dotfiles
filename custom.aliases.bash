@@ -25,3 +25,6 @@ alias psql='docker run -it --rm --network="host" postgres:alpine psql "$@"'
 alias runhaskell='stack runhaskell'
 alias ghc='stack exec ghc --'
 alias ghci='stack exec ghci --'
+
+# kafka client
+alias kafka-client='docker run -it --rm --network="host" -w /opt/kafka_2.11-0.10.1.0/bin spotify/kafka /bin/bash'
