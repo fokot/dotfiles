@@ -1,4 +1,16 @@
-Now I'm using [bash-it](https://github.com/Bash-it/bash-it).
+Now I'm using zsh and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
+
+* Install via
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+* Install font [Source Code Pro + Font Awesome](https://github.com/Falkor/dotfiles/blob/master/fonts/SourceCodePro%2BPowerline%2BAwesome%2BRegular.ttf)
+* Choose corrent font in Terminal > Preferences > Profiles
+* Then edit your `~/.zshrc` and set `ZSH_THEME="powerlevel10k/powerlevel10k"`.
+* To configure run `p10k configure` or `vim ~/.p10k.zsh`
+
+
+When I was using [bash-it](https://github.com/Bash-it/bash-it).
 
 I enabled there competions ```bash-it show completion | grep '\[x\]'```
 ```
