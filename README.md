@@ -9,6 +9,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 * Then edit your `~/.zshrc` and set `ZSH_THEME="powerlevel10k/powerlevel10k"`.
 * To configure run `p10k configure` or `vim ~/.p10k.zsh`
 
+* Copy and add run_ranger to `.zshrc`. To change ranger color run `ranger --copy-config=all` go to `~/.config/ranger/rc.conf` and change colorscheme to snow. 
+
 
 When I was using [bash-it](https://github.com/Bash-it/bash-it).
 
