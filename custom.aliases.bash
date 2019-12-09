@@ -28,3 +28,6 @@ alias ghci='stack exec ghci --'
 
 # kafka client
 alias kafka-client='docker run -it --rm --network="host" -w /opt/kafka_2.11-0.10.1.0/bin spotify/kafka /bin/bash'
+
+# browser-sync - body tag must be present!!!
+alias browser-sync='docker run --rm -dt --name browser-sync -p 3000:3000 -v $(PWD):/source -w /source ustwo/browser-sync start --server --files "./**" --"." && open http://localhost:3000'
