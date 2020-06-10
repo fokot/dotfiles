@@ -60,6 +60,9 @@
 # sudo pacman -Ss openjdk 
 # pamac install jdk8-openjdk
 
+# google sdk and kubectl
+pamac install google-cloud-sdk
+pamac install kubectl
 
 
 # TODO
