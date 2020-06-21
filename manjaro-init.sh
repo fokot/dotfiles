@@ -73,6 +73,8 @@ pamac install npm
 # /home/user/.node_modules_global
 cd ~ && mkdir .node_modules_global && npm config set prefix=$HOME/.node_modules_global && npm config set prefix=$HOME/.node_modules_global
 
+echo 'edit path in ~/.zshrc like export PATH="/home/fokot/.node_modules_global/bin:$PATH"   '
+
 # TODO
 
 # oh my zsh
