@@ -64,6 +64,14 @@
 pamac install google-cloud-sdk
 pamac install kubectl
 
+# install npm
+pamac install npm
+
+# It's generally discouraged to install extensions outside the home directory, the above one liner changes the global path from
+# /usr
+#  to
+# /home/user/.node_modules_global
+cd ~ && mkdir .node_modules_global && npm config set prefix=$HOME/.node_modules_global && npm config set prefix=$HOME/.node_modules_global
 
 # TODO
 
