@@ -75,6 +75,8 @@ cd ~ && mkdir .node_modules_global && npm config set prefix=$HOME/.node_modules_
 
 echo 'edit path in ~/.zshrc like export PATH="/home/fokot/.node_modules_global/bin:$PATH"   '
 
+pamac install  ttf-google-fonts-git
+
 # TODO
 
 # oh my zsh
