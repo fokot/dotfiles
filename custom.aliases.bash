@@ -6,7 +6,9 @@ alias gff='git checkout develop && git pull && git-flow feature start'
 alias gp='git push origin HEAD'
 alias gl='git log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white)"'
 # delete all banches except master 
-alias gd='git branch | grep -v "master" | xargs git branch -D'
+alias gdd='git branch | grep -v "master" | xargs git branch -D'
+# set the date of the last commit to the current date
+alias gd='git commit --amend --no-edit --date "$(date)"'
 
 
 # better history https://github.com/hanslub42/rlwrap
