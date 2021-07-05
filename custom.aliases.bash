@@ -37,3 +37,5 @@ alias browser-sync='docker run --rm -dt --name browser-sync -p 3000:3000 -v $(PW
 # copy / paste to clipboard from shell
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
+
+alias k=kubectl
