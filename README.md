@@ -37,3 +37,5 @@ Put the files in correct bash-it folders.
 
 [rlwrap](https://github.com/hanslub42/rlwrap) is amazing extension what fixes problem with pressing arrows in some shells. It can be added to a shell like this
 ```alias lein="rlwrap lein"```
+
+[k9s](https://k9scli.io/) is great tool for K8s
