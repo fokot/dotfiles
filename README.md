@@ -2,7 +2,7 @@ Now I'm using zsh and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
 
 * Install via
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 * Install font [Source Code Pro + Font Awesome](https://github.com/Falkor/dotfiles/blob/master/fonts/SourceCodePro%2BPowerline%2BAwesome%2BRegular.ttf)
 * Choose corrent font in Terminal > Preferences > Profiles
