@@ -15,6 +15,12 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 * Copy and add run_ranger to `.zshrc`. To change ranger color run `ranger --copy-config=all` go to `~/.config/ranger/rc.conf` and change colorscheme to snow. 
 
+* fzf
+```
+brew install fzf
+# To install useful key bindings and fuzzy completion:
+$(brew --prefix)/opt/fzf/install
+```
 
 When I was using [bash-it](https://github.com/Bash-it/bash-it).
 
