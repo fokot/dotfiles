@@ -22,6 +22,16 @@ brew install fzf
 $(brew --prefix)/opt/fzf/install
 ```
 
+* gpg
+```
+brew install gpg2
+```
+To test gpg
+```
+echo "test" | gpg --clearsign
+```
+If needed install and configure `pinentry-mac` too.
+
 When I was using [bash-it](https://github.com/Bash-it/bash-it).
 
 I enabled there competions ```bash-it show completion | grep '\[x\]'```
