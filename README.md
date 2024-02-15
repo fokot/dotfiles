@@ -13,24 +13,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 * Then edit your `~/.zshrc` and set `ZSH_THEME="powerlevel10k/powerlevel10k"`.
 * To configure run `p10k configure` or `vim ~/.p10k.zsh`
 
-* Copy and add run_ranger to `.zshrc`. To change ranger color run `ranger --copy-config=all` go to `~/.config/ranger/rc.conf` and change colorscheme to snow. 
-
-# fzf
-```
-brew install fzf
-# To install useful key bindings and fuzzy completion:
-$(brew --prefix)/opt/fzf/install
-```
-
-# gpg
-```
-brew install gpg2
-```
-To test gpg
-```
-echo "test" | gpg --clearsign
-```
-If needed install and configure `pinentry-mac` too.
+* Copy and add run_ranger to `.zshrc`. To change ranger color run `ranger --copy-config=all` go to `~/.config/ranger/rc.conf` and change colorscheme to snow.
 
 # Install homebrew
 ```
@@ -61,6 +44,23 @@ sdk install java <name>
 # choose version with
 sdk use java <name>
 ```
+
+# fzf
+```
+brew install fzf
+# To install useful key bindings and fuzzy completion:
+$(brew --prefix)/opt/fzf/install
+```
+
+# gpg
+```
+brew install gpg2
+```
+To test gpg
+```
+echo "test" | gpg --clearsign
+```
+If needed install and configure `pinentry-mac` too.
 
 # When I was using [bash-it](https://github.com/Bash-it/bash-it).
 
