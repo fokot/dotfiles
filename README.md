@@ -54,6 +54,8 @@ $(brew --prefix)/opt/fzf/install
 
 # install [raycast](https://www.raycast.com)
 
+# install [Jetbrains Toolbox](https://www.jetbrains.com/toolbox-app/)
+
 # gpg
 ```
 brew install gpg2
