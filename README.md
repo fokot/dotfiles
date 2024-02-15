@@ -1,33 +1,3 @@
-# Install homebrew
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-Add to `.zshrc`
-```
-export PATH=/opt/homebrew/bin:$PATH
-```
-
-# Install sdkman
-```
-brew tap sdkman/tap
-brew install sdkman-cli
-```
-
-Add to `.zshrc`
-```
-export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
-```
-
-Install java or other sdk like
-```
-sdk list java
-sdk install java <name>
-# choose version with
-sdk use java <name>
-```
-
 # Now I'm using zsh and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
 
 * Install via
@@ -61,6 +31,36 @@ To test gpg
 echo "test" | gpg --clearsign
 ```
 If needed install and configure `pinentry-mac` too.
+
+# Install homebrew
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Add to `.zshrc`
+```
+export PATH=/opt/homebrew/bin:$PATH
+```
+
+# Install sdkman
+```
+brew tap sdkman/tap
+brew install sdkman-cli
+```
+
+Add to `.zshrc`
+```
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+```
+
+Install java or other sdk like
+```
+sdk list java
+sdk install java <name>
+# choose version with
+sdk use java <name>
+```
 
 # When I was using [bash-it](https://github.com/Bash-it/bash-it).
 
