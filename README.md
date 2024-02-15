@@ -52,6 +52,8 @@ brew install fzf
 $(brew --prefix)/opt/fzf/install
 ```
 
+# install [raycast](https://www.raycast.com)
+
 # gpg
 ```
 brew install gpg2
