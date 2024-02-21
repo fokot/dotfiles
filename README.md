@@ -45,6 +45,15 @@ sdk install java <name>
 sdk use java <name>
 ```
 
+# Install nvm
+```
+brew install nvm
+```
+and add this to `~/.zshrc`:
+```
+source $(brew --prefix nvm)/nvm.sh
+```
+
 # fzf
 ```
 brew install fzf
