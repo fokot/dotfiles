@@ -104,3 +104,10 @@ Put the files in correct bash-it folders.
 ```alias lein="rlwrap lein"```
 
 [k9s](https://k9scli.io/) is great tool for K8s
+
+# psql
+Without postgres db
+```
+brew install libpq
+brew link --force libpq
+```
