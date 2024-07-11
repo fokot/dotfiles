@@ -21,7 +21,7 @@ alias pserver="python -m SimpleHTTPServer"
 alias myIp="ifconfig en0 inet | awk '/inet/{print \$2}'"
 
 # docker psql
-alias psql='docker run -it --rm --network="host" postgres:alpine psql "$@"'
+# alias psql='docker run -it --rm --network="host" postgres:alpine psql "$@"'
 
 # haskell
 alias runhaskell='stack runhaskell'
