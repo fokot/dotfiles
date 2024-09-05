@@ -15,7 +15,8 @@ alias gd='git commit --amend --no-edit --date "$(date)"'
 alias lein="rlwrap lein"
 
 # simple python server, default port is 8000
-alias pserver="python -m SimpleHTTPServer"
+#alias pserver="python -m SimpleHTTPServer"
+alias pserver="python3 -m http.server"
 
 # returns my default IP addressss
 alias myIp="ifconfig en0 inet | awk '/inet/{print \$2}'"
