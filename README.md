@@ -111,3 +111,8 @@ Without postgres db
 brew install libpq
 brew link --force libpq
 ```
+
+# git aliases
+```
+git config --global alias.pull-current '!git pull origin $(git branch --show-current)'
+```
