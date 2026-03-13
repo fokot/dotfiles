@@ -40,3 +40,4 @@ alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
 
 alias k=kubectl
+alias cdd='claude --dangerously-skip-permissions'
