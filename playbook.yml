@@ -104,3 +104,9 @@
         marker: "# {mark} ANSIBLE MANAGED BLOCK — mac bootstrap"
         block: "{{ lookup('ansible.builtin.template', 'templates/zshrc.block.j2') }}"
         create: yes
+
+    - name: Set git pull-current alias
+      community.general.git_config:
+        scope: global
+        name: alias.pull-current
+        value: '!git pull origin $(git branch --show-current)'
