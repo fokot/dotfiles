@@ -1,3 +1,5 @@
+Use `bootstrap-mac.sh` to install everything with `brew` and `ansible`.
+
 # Now I'm using zsh and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
 
 * Install via
