@@ -32,8 +32,9 @@ Bash, `set -euo pipefail`. Steps:
 Tasks (each named, idempotent):
 
 1. **Tap `sdkman/tap`** — `community.general.homebrew_tap`.
-2. **Install Homebrew formulas** — `community.general.homebrew` with list: `sdkman-cli`, `nvm`, `fzf`, `gnupg`, `libpq`.
-3. **Install Homebrew casks** — `community.general.homebrew_cask` with list: `raycast`, `jetbrains-toolbox`, `font-sauce-code-pro-nerd-font`.
+2. **Install Homebrew formulas** — `community.general.homebrew` with list: `sdkman-cli`, `nvm`, `fzf`, `gnupg`, `libpq`, `mas`.
+3. **Install Homebrew casks** — `community.general.homebrew_cask` with list: `raycast`, `jetbrains-toolbox`, `font-sauce-code-pro-nerd-font`, `google-chrome`, `freelens`, `headlamp`.
+3a. **Install App Store apps via `mas`** — `ansible.builtin.command` with `mas install <id>` for each: Slack (`803453959`), WhatsApp (`1147396723`). Use `mas list | grep <id>` as the `creates`-equivalent guard (via `register` + `when`) so re-runs are no-ops. Caveat: first install of an app never associated with the user's Apple ID will fail; the failure message tells the user to install once manually from the App Store, then re-run the playbook. The exact App Store IDs will be verified against `mas search` during implementation.
 4. **Run fzf install script** — `ansible.builtin.command` invoking `/opt/homebrew/opt/fzf/install --all --no-update-rc`. Uses `creates:` on `~/.fzf.zsh` so it only runs once. The `--no-update-rc` flag prevents fzf from editing `~/.zshrc` (we manage that block ourselves).
 5. **Install oh-my-zsh** — `ansible.builtin.shell` running the official curl installer with `RUNZSH=no CHSH=no` env vars. Guarded by `creates: ~/.oh-my-zsh`.
 6. **Clone powerlevel10k** — `ansible.builtin.git` to `~/.oh-my-zsh/custom/themes/powerlevel10k`, `depth: 1`, `update: no` (don't auto-pull on re-runs).
