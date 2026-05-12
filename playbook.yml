@@ -1,0 +1,37 @@
+---
+- name: Configure macOS
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  vars:
+    brew_prefix: /opt/homebrew
+
+  tasks:
+    - name: Tap sdkman/tap
+      community.general.homebrew_tap:
+        name: sdkman/tap
+
+    - name: Install Homebrew formulas
+      community.general.homebrew:
+        name:
+          - sdkman-cli
+          - nvm
+          - fzf
+          - gnupg
+          - libpq
+          - mas
+          - kubernetes-cli
+          - kubectx
+        state: present
+
+    - name: Install Homebrew casks
+      community.general.homebrew_cask:
+        name:
+          - raycast
+          - jetbrains-toolbox
+          - font-sauce-code-pro-nerd-font
+          - google-chrome
+          - freelens
+          - headlamp
+        state: present
