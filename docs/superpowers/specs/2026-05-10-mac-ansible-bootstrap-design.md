@@ -40,6 +40,7 @@ Tasks (each named, idempotent):
 3b. **Symlink `kubectx`/`kubens` as kubectl plugins** — `ansible.builtin.file` with `state: link`:
    - `/opt/homebrew/bin/kubectl-ctx` → `/opt/homebrew/bin/kubectx`
    - `/opt/homebrew/bin/kubectl-ns` → `/opt/homebrew/bin/kubens`
+3c. **Install Claude Code** — `ansible.builtin.shell` running `curl -fsSL https://claude.ai/install.sh | bash`. Guarded by `creates:` on the installer's output binary (exact path — likely `~/.local/bin/claude` — to be verified during implementation by running the installer once).
 4. **Run fzf install script** — `ansible.builtin.command` invoking `/opt/homebrew/opt/fzf/install --all --no-update-rc`. Uses `creates:` on `~/.fzf.zsh` so it only runs once. The `--no-update-rc` flag prevents fzf from editing `~/.zshrc` (we manage that block ourselves).
 5. **Install oh-my-zsh** — `ansible.builtin.shell` running the official curl installer with `RUNZSH=no CHSH=no` env vars. Guarded by `creates: ~/.oh-my-zsh`.
 6. **Clone powerlevel10k** — `ansible.builtin.git` to `~/.oh-my-zsh/custom/themes/powerlevel10k`, `depth: 1`, `update: no` (don't auto-pull on re-runs).
