@@ -71,3 +71,36 @@
       ansible.builtin.shell: curl -fsSL https://claude.ai/install.sh | bash
       args:
         creates: "{{ ansible_env.HOME }}/.local/bin/claude"
+
+    - name: Run fzf install script
+      ansible.builtin.command: "{{ brew_prefix }}/opt/fzf/install --all --no-update-rc"
+      args:
+        creates: "{{ ansible_env.HOME }}/.fzf.zsh"
+
+    - name: Install oh-my-zsh
+      ansible.builtin.shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
+      args:
+        creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
+      environment:
+        RUNZSH: 'no'
+        CHSH: 'no'
+
+    - name: Clone powerlevel10k theme
+      ansible.builtin.git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k"
+        depth: 1
+        update: no
+
+    - name: Set ZSH_THEME to powerlevel10k
+      ansible.builtin.lineinfile:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        regexp: '^ZSH_THEME='
+        line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
+
+    - name: Manage zshrc block
+      ansible.builtin.blockinfile:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        marker: "# {mark} ANSIBLE MANAGED BLOCK — mac bootstrap"
+        block: "{{ lookup('ansible.builtin.template', 'templates/zshrc.block.j2') }}"
+        create: yes
