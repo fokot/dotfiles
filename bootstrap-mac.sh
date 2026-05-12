@@ -25,12 +25,10 @@ if ! command -v mas &>/dev/null; then
     brew install mas
 fi
 
-echo "==> Checking App Store sign-in..."
-if ! mas account &>/dev/null; then
-    echo "Error: Not signed in to the App Store."
-    echo "Open the App Store app, sign in with your Apple ID, then re-run this script."
-    exit 1
-fi
+echo "==> Make sure you are signed in to the App Store app before continuing."
+echo "    (mas can no longer detect sign-in status; App Store installs will fail if you aren't.)"
+echo "    Press Enter to continue, or Ctrl-C to abort."
+read -r _
 
 echo "==> Running playbook..."
 ansible-playbook playbook.yml
