@@ -41,25 +41,31 @@
       register: mas_list
       changed_when: false
 
+    - name: Extract installed App Store IDs
+      ansible.builtin.set_fact:
+        installed_app_ids: "{{ mas_list.stdout_lines | map('split') | map('first') | list }}"
+
     - name: Install Slack from App Store
       ansible.builtin.command: mas install 803453959
-      when: "'803453959' not in mas_list.stdout"
+      when: "'803453959' not in installed_app_ids"
 
     - name: Install WhatsApp from App Store
       ansible.builtin.command: mas install 1147396723
-      when: "'1147396723' not in mas_list.stdout"
+      when: "'1147396723' not in installed_app_ids"
 
     - name: Symlink kubectx as kubectl-ctx
       ansible.builtin.file:
         src: "{{ brew_prefix }}/bin/kubectx"
         dest: "{{ brew_prefix }}/bin/kubectl-ctx"
         state: link
+        force: yes
 
     - name: Symlink kubens as kubectl-ns
       ansible.builtin.file:
         src: "{{ brew_prefix }}/bin/kubens"
         dest: "{{ brew_prefix }}/bin/kubectl-ns"
         state: link
+        force: yes
 
     - name: Install Claude Code
       ansible.builtin.shell: curl -fsSL https://claude.ai/install.sh | bash
