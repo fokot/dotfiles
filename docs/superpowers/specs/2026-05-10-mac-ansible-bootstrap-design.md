@@ -23,7 +23,9 @@ Bash, `set -euo pipefail`. Steps:
 1. **Check Xcode Command Line Tools.** If `xcode-select -p` fails, print instructions to run `xcode-select --install` and exit non-zero. (We don't trigger the GUI installer because it blocks on user interaction.)
 2. **Install Homebrew** if `command -v brew` fails, using the official curl installer. After install, eval `/opt/homebrew/bin/brew shellenv` so `brew` is on PATH for the rest of the script.
 3. **Install Ansible** via `brew install ansible` if not present.
-4. **Run the playbook:** `ansible-playbook playbook.yml`. No `--ask-become-pass` — none of the tasks need sudo.
+4. **Install `mas`** via `brew install mas` if not present (needed for the pre-check below).
+5. **App Store sign-in pre-check:** run `mas account`. If it fails (not signed in), print a clear message asking the user to open the App Store app and sign in with their Apple ID, then exit non-zero. The playbook can't recover from this and `mas install` would fail with a less obvious error.
+6. **Run the playbook:** `ansible-playbook playbook.yml`. No `--ask-become-pass` — none of the tasks need sudo.
 
 ## Playbook (`playbook.yml`)
 
@@ -32,9 +34,12 @@ Bash, `set -euo pipefail`. Steps:
 Tasks (each named, idempotent):
 
 1. **Tap `sdkman/tap`** — `community.general.homebrew_tap`.
-2. **Install Homebrew formulas** — `community.general.homebrew` with list: `sdkman-cli`, `nvm`, `fzf`, `gnupg`, `libpq`, `mas`.
+2. **Install Homebrew formulas** — `community.general.homebrew` with list: `sdkman-cli`, `nvm`, `fzf`, `gnupg`, `libpq`, `mas`, `kubernetes-cli`, `kubectx`.
 3. **Install Homebrew casks** — `community.general.homebrew_cask` with list: `raycast`, `jetbrains-toolbox`, `font-sauce-code-pro-nerd-font`, `google-chrome`, `freelens`, `headlamp`.
 3a. **Install App Store apps via `mas`** — `ansible.builtin.command` with `mas install <id>` for each: Slack (`803453959`), WhatsApp (`1147396723`). Use `mas list | grep <id>` as the `creates`-equivalent guard (via `register` + `when`) so re-runs are no-ops. Caveat: first install of an app never associated with the user's Apple ID will fail; the failure message tells the user to install once manually from the App Store, then re-run the playbook. The exact App Store IDs will be verified against `mas search` during implementation.
+3b. **Symlink `kubectx`/`kubens` as kubectl plugins** — `ansible.builtin.file` with `state: link`:
+   - `/opt/homebrew/bin/kubectl-ctx` → `/opt/homebrew/bin/kubectx`
+   - `/opt/homebrew/bin/kubectl-ns` → `/opt/homebrew/bin/kubens`
 4. **Run fzf install script** — `ansible.builtin.command` invoking `/opt/homebrew/opt/fzf/install --all --no-update-rc`. Uses `creates:` on `~/.fzf.zsh` so it only runs once. The `--no-update-rc` flag prevents fzf from editing `~/.zshrc` (we manage that block ourselves).
 5. **Install oh-my-zsh** — `ansible.builtin.shell` running the official curl installer with `RUNZSH=no CHSH=no` env vars. Guarded by `creates: ~/.oh-my-zsh`.
 6. **Clone powerlevel10k** — `ansible.builtin.git` to `~/.oh-my-zsh/custom/themes/powerlevel10k`, `depth: 1`, `update: no` (don't auto-pull on re-runs).
