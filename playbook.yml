@@ -35,3 +35,33 @@
           - freelens
           - headlamp
         state: present
+
+    - name: List installed App Store apps
+      ansible.builtin.command: mas list
+      register: mas_list
+      changed_when: false
+
+    - name: Install Slack from App Store
+      ansible.builtin.command: mas install 803453959
+      when: "'803453959' not in mas_list.stdout"
+
+    - name: Install WhatsApp from App Store
+      ansible.builtin.command: mas install 1147396723
+      when: "'1147396723' not in mas_list.stdout"
+
+    - name: Symlink kubectx as kubectl-ctx
+      ansible.builtin.file:
+        src: "{{ brew_prefix }}/bin/kubectx"
+        dest: "{{ brew_prefix }}/bin/kubectl-ctx"
+        state: link
+
+    - name: Symlink kubens as kubectl-ns
+      ansible.builtin.file:
+        src: "{{ brew_prefix }}/bin/kubens"
+        dest: "{{ brew_prefix }}/bin/kubectl-ns"
+        state: link
+
+    - name: Install Claude Code
+      ansible.builtin.shell: curl -fsSL https://claude.ai/install.sh | bash
+      args:
+        creates: "{{ ansible_env.HOME }}/.local/bin/claude"
