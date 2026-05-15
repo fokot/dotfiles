@@ -23,6 +23,7 @@
           - mas
           - kubernetes-cli
           - kubectx
+          - orbstack
         state: present
 
     - name: Install Homebrew casks
