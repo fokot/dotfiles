@@ -30,5 +30,5 @@ echo "    (mas can no longer detect sign-in status; App Store installs will fail
 echo "    Press Enter to continue, or Ctrl-C to abort."
 read -r _
 
-echo "==> Running playbook..."
-ansible-playbook playbook.yml
+echo "==> Running playbook (you will be prompted for your sudo password — required by mas to install App Store apps)..."
+ansible-playbook playbook.yml --ask-become-pass

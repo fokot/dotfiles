@@ -34,6 +34,7 @@
           - google-chrome
           - freelens
           - headlamp
+          - zed
         state: present
 
     - name: Symlink kubectx as kubectl-ctx
@@ -65,8 +66,8 @@
       args:
         creates: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh"
       environment:
-        RUNZSH: 'no'
-        CHSH: 'no'
+        RUNZSH: "no"
+        CHSH: "no"
 
     - name: Clone powerlevel10k theme
       ansible.builtin.git:
@@ -78,7 +79,7 @@
     - name: Set ZSH_THEME to powerlevel10k
       ansible.builtin.lineinfile:
         path: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
-        regexp: '^ZSH_THEME='
+        regexp: "^ZSH_THEME="
         line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
 
     - name: Manage zshrc block
@@ -92,7 +93,7 @@
       community.general.git_config:
         scope: global
         name: alias.pull-current
-        value: '!git pull origin $(git branch --show-current)'
+        value: "!git pull origin $(git branch --show-current)"
 
     - name: List installed App Store apps
       ansible.builtin.command: mas list
@@ -103,10 +104,26 @@
       ansible.builtin.set_fact:
         installed_app_ids: "{{ mas_list.stdout_lines | map('split') | map('first') | list }}"
 
+    - name: Check if Slack.app exists in /Applications
+      ansible.builtin.stat:
+        path: /Applications/Slack.app
+      register: slack_app
+
     - name: Install Slack from App Store
       ansible.builtin.command: mas install 803453959
-      when: "'803453959' not in installed_app_ids"
+      become: yes
+      when:
+        - "'803453959' not in installed_app_ids"
+        - not slack_app.stat.exists
+
+    - name: Check if WhatsApp.app exists in /Applications
+      ansible.builtin.stat:
+        path: /Applications/WhatsApp.app
+      register: whatsapp_app
 
     - name: Install WhatsApp from App Store
-      ansible.builtin.command: mas install 1147396723
-      when: "'1147396723' not in installed_app_ids"
+      ansible.builtin.command: mas install 310633997
+      become: yes
+      when:
+        - "'310633997' not in installed_app_ids"
+        - not whatsapp_app.stat.exists
