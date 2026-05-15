@@ -1,4 +1,13 @@
 Use `bootstrap-mac.sh` to install everything with `brew` and `ansible`.
+If `ansible` fails you can run it manually like
+```
+ansible-playbook playbook.yml --ask-become-pass
+```
+`--ask-become-pass` will ask you at the beginning for the `root` password and will use it in steps marked `become: yes`.
+If it fails, that there is no such applicaiton id in `App Store`, you can use
+```
+mas search "WhatsApp Messenger"
+```
 
 # Now I'm using zsh and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
 
