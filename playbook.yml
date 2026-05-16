@@ -83,6 +83,11 @@
         regexp: "^ZSH_THEME="
         line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
 
+    - name: Copy custom.aliases.bash to home
+      ansible.builtin.copy:
+        src: custom.aliases.bash
+        dest: "{{ ansible_facts['env']['HOME'] }}/.custom.aliases.bash"
+
     - name: Manage zshrc block
       ansible.builtin.blockinfile:
         path: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
