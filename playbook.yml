@@ -36,6 +36,7 @@
           - freelens
           - headlamp
           - zed
+          - commander-one
         state: present
 
     - name: Symlink kubectx as kubectl-ctx
