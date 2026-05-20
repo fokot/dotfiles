@@ -1,3 +1,5 @@
+# Dotfiles and computer setup
+
 Use `bootstrap-mac.sh` to install everything with `brew` and `ansible`.
 If `ansible` fails you can run it manually like
 ```
